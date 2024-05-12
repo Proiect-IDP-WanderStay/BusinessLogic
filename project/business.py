@@ -46,6 +46,8 @@ def home():
 @token_required
 def getRooms(user_id):
     payload = request.get_json(silent=True)
+    if (not payload):
+        payload = {}
     payload["user_id"] = user_id
     
     response = requests.post(url=IO_API_URL + "/getRooms", 
